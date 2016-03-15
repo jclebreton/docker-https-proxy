@@ -20,7 +20,7 @@ Then navigate to https://127.0.0.1 and add security exception.
             image: nginx
             container_name: www
             volumes:
-                - '/some/content:/usr/share/nginx/html:ro'
+                - '.:/usr/share/nginx/html:ro'
         haproxy:
             image: jclebreton/https-proxy
             container_name: haproxy
@@ -30,6 +30,6 @@ Then navigate to https://127.0.0.1 and add security exception.
                 - www
             environment:
                 - BACKEND_SERVER=www
-                - BACKEND_PORT=8080
+                - BACKEND_PORT=80
             ports:
                 - '443:443'
